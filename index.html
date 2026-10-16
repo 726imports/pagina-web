@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>726 IMPORTS | Tienda Oficial</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandDark: '#080808',
+                        brandCard: '#121212',
+                        brandBorder: '#222222',
+                        brandAccent: '#ffffff'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome para Íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-brandDark text-gray-100 antialiased min-h-screen flex flex-col selection:bg-white selection:text-black">
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-40 bg-black/80 backdrop-blur-md border-b border-brandBorder transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Logo Navbar -->
+            <a href="#" class="flex items-center gap-3 group">
+                <img src="Logotipo minimalista 726 Imports.png" alt="726 Imports Logo" class="h-10 w-auto object-contain invert brightness-200 group-hover:scale-105 transition-transform">
+            </a>
+
+            <!-- Navegación -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold tracking-wider text-gray-400">
+                <a href="#mallas" class="hover:text-white transition-colors">MALLAS</a>
+                <a href="#conjuntos" class="hover:text-white transition-colors">CONJUNTOS</a>
+                <a href="#retro" class="hover:text-white transition-colors">RETRO</a>
+                <a href="#tecnologia" class="hover:text-white transition-colors">TECNOLOGÍA</a>
+            </nav>
+
+            <!-- Botón Carrito -->
+            <button onclick="toggleCart()" class="relative p-3 rounded-full bg-brandCard border border-brandBorder text-white hover:border-white transition-colors focus:outline-none">
+                <i class="fa-solid fa-bag-shopping text-lg"></i>
+                <span id="cart-count" class="absolute -top-1 -right-1 bg-white text-black text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative bg-black border-b border-brandBorder py-20 overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col items-center text-center">
+            <img src="Logotipo minimalista 726 Imports.png" alt="726 Imports" class="max-w-xs md:max-w-md w-full mb-6 invert brightness-200">
+            <p class="text-gray-400 text-sm md:text-base max-w-2xl tracking-widest uppercase font-light">
+                Indumentaria Urbana &amp; Tecnología Importada Exclusiva
+            </p>
+            <div class="mt-8 flex gap-4">
+                <a href="#mallas" class="px-8 py-3 bg-white text-black font-bold text-xs uppercase tracking-widest rounded-none hover:bg-gray-200 transition-colors">
+                    Ver Colección
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-24">
+
+        <!-- SECCIÓN: MALLAS (Carrusel Interactivo) -->
+        <section id="mallas" class="scroll-mt-28">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 border-b border-brandBorder pb-4">
+                <div>
+                    <span class="text-xs uppercase tracking-widest text-gray-500 font-bold">Colección Verano</span>
+                    <h2 class="text-3xl font-black tracking-tight text-white mt-1">Mallas / Boardshorts</h2>
+                </div>
+                <div class="mt-4 md:mt-0 flex items-center gap-4">
+                    <span class="text-xl font-bold text-gray-300">$30.000</span>
+                    <div class="flex gap-2">
+                        <button onclick="scrollCarousel(-1)" class="w-10 h-10 border border-brandBorder bg-brandCard text-white flex items-center justify-center hover:bg-white hover:text-black transition-colors">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+                        <button onclick="scrollCarousel(1)" class="w-10 h-10 border border-brandBorder bg-brandCard text-white flex items-center justify-center hover:bg-white hover:text-black transition-colors">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slider Container -->
+            <div id="mallas-carousel" class="flex gap-6 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-6">
+                
+                <!-- Modelo 1 -->
+                <div class="snap-start min-w-[280px] sm:min-w-[320px] max-w-[320px] bg-brandCard border border-brandBorder flex flex-col justify-between group">
+                    <div class="relative overflow-hidden aspect-[3/4]">
+                        <img src="All day.jpeg" alt="Malla All Day" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow justify-between">
+                        <div>
+                            <h3 class="font-bold text-lg text-white">Boardshort All Day</h3>
+                            <p class="text-sm text-gray-400 mt-1">$30.000</p>
+                        </div>
+                        <div class="mt-4">
+                            <label class="block text-xs uppercase font-semibold text-gray-400 mb-2">Seleccionar Talle:</label>
+                            <div class="flex gap-2 mb-4" id="size-malla-1">
+                                <button onclick="selectSize(this, 'malla-1', 'S')" class="size-btn flex-1 py-1 text-xs border border-brandBorder font-semibold hover:border-white transition-colors">S</button>
+                                <button onclick="selectSize(this, 'malla-1', 'M')" class="size-btn flex-1 py-1 text-xs border border-brandBorder font-semibold hover:border-white transition-colors">M</button>
+                                <button onclick="selectSize(this, 'malla-1', 'L')" class="size-btn flex-1 py-1 text-xs border border-brandBorder font-semibold hover:border-white transition-colors">L</button>
+                                <button onclick="selectSize(this, 'malla-1', 'XL')" class="size-btn flex-1 py-1 text-xs border border-brandBorder font-semibold hover:border-white transition-colors">XL</button>
+                                <button onclick="selectSize(this, 'malla-1', 'XXL')" class="size-btn flex-1 py-1 text-xs border border-brandBorder font-semibold hover:border-white transition-colors">XXL</button>
+                            </div>
+                            <button onclick="addToCart('Boardshort All Day', 30000, 'malla-1', true)" class="w-full bg-white text-black font-bold py-3 text-xs uppercase tracking-widest hover:bg-gray-200 transition-colors">
+                                Agregar al Carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modelo 2 -->
+                <div class="snap-start min-w-[280px] sm:min-w-[320px] max-w-[320px] bg-brandCard border border-brandBorder flex flex-col justify-between group">
+                    <div class="relative overflow-hidden aspect-[3/4]">
+                        <img src="Australia.jpeg" alt="Malla Australia" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow justify-between">
+                        <div>
+                            <h3 class="font-bold text-lg text-white">Boardshort Australia</h3>
+                            <p class="text-sm text-gray-400 mt-1">$30.000</p>
+                        </div>
+                        <div class="mt-4">
+                            <label class="block text-xs uppercase font-semibold text-gray-400 mb-2">Seleccionar Talle:</label>
+                            <div class="flex gap-2 mb-4" id="size-malla-2">
+                                <button onclick="selectSize(this, 'malla-2', 'S')" class="size-btn flex-1 py-1 text-xs border border-brandBorder font-semibold hover:border-white transition-colors">S</button>
+                                <button onclick="selectSize(this, 'malla-2', 'M')" class="size-btn flex-1 py-1 text-xs border border-brandBorder font-semibold hover:border-white transition-colors">M</button>
+                                <button onclick="selectSize(this, 'malla-2', 'L')" class="size-btn flex-1 py-1 text-xs border border-brandBorder font-semibold hover:border-white transition-colors">L</button>
+                                <button onclick="selectSize(this, 'malla-2', 'XL')" class="size-btn flex-1 py-1 text-xs border border-brandBorder font-semibold hover:border-white transition-colors">XL</button>
+                                <button onclick="selectSize(this, 'malla-2', 'XXL')" class="size-btn flex-1 py-1 text-xs border border-brandBorder font-semibold hover:border-white transition-colors">XXL</button>
+                            </div>
+                            <button onclick="addToCart('Boardshort Australia', 30000, 'malla-2', true)" class="w-full bg-white text-black font-bold py-3 text-xs uppercase tracking-widest hover:bg-gray-200 transition-colors">
+                                Agregar al Carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modelo 3 -->
+                <div class="snap-start min-w-[280px] sm:min-w-[320px] max-w-[320px] bg-brandCard border border-brandBorder flex flex-col justify-between group">
+                    <div class="relative overflow-hidden aspect-[3/4]">
+                        <img src="Boardshort BAYW.jpeg" alt="Boardshort BAYW" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow justify-between">
+                        <div>
+                            <h3 class="font-bold text-lg text-white">Boardshort BAYW</h3>
+                            <p class="text-sm text-gray-400 mt-1">$30.000</p>
+                        </div>
+                        <div class="mt-4">
+                            <label class="block text-xs uppercase font-semibold text-gray-400 mb-2">Seleccionar Talle:</label>
+                            <div class="flex gap-2 mb-4" id="size-malla-3">
+                                <button onclick="selectSize(this, 'malla-3', 'S')" class="size-btn flex-1 py-1 text-xs border border-brandBorder font-semibold hover:border-white transition-colors">S</button>
+                                <button onclick="selectSize(this, 'malla-3', 'M')" class="size-btn flex-1 py-1 text-xs border border-brandBorder font-semibold hover:border-white transition-colors">M</button>
+                                <button onclick="selectSize(this, 'malla-3', 'L')" class="size-btn flex-1 py-1 text-xs border border-brandBorder font-semibold hover:border-white transition-colors">L</button>
+                                <button onclick="selectSize(this, 'malla-3', 'XL')" class="size-btn flex-1 py-1 text-xs border border-brandBorder font-semibold hover:border-white transition-colors">XL</button>
+                                <button onclick="selectSize(this, 'malla-3', 'XXL')" class="size-btn flex-1 py-1 text-xs border border-brandBorder font-semibold hover:border-white transition-colors">XXL</button>
+                            </div>
+                            <button onclick="addToCart('Boardshort BAYW', 30000, 'malla-3', true)" class="w-full bg-white text-black font-bold py-3 text-xs uppercase tracking-widest hover:bg-gray-200 transition-colors">
+                                Agregar al Carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modelo 4 -->
+                <div class="snap-start min-w-[280px] sm:min-w-[320px] max-w-[320px] bg-brandCard border border-brandBorder flex flex-col justify-between group">
+                    <div class="relative overflow-hidden aspect-[3/4]">
+                        <img src="Boardshort Y2K.jpeg" alt="Boardshort Y2K" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow justify-between">
+                        <div>
+                            <h3 class="font-bold text-lg text-white">Boardshort Y2K</h3>
+                            <p class="text-sm text-gray-400 mt-1">$30.000</p>
+                        </div>
+                        <div class="mt-4">
+                            <label class="block text-xs uppercase font-semibold text-gray-400 mb-2">Seleccionar Talle:</label>
+                            <div class="flex gap-2 mb-4" id="size-malla-4">
+                                <button onclick="selectSize(this, 'malla-4', 'S')" class="size-btn flex-1 py-1 text-xs border border-brandBorder font-semibold hover:border-white transition-colors">S</button>
+                                <button onclick="selectSize(this, 'malla-4', 'M')" class="size-btn flex-1 py-1 text-xs border border-brandBorder font-semibold hover:border-white transition-colors">M</button>
+                                <button onclick="selectSize(this, 'malla-4', 'L')" class="size-btn flex-1 py-1 text-xs border border-brandBorder font-semibold hover:border-white transition-colors">L</button>
+                                <button onclick="selectSize(this, 'malla-4', 'XL')" class="size-btn flex-1 py-1 text-xs border border-brandBorder font-semibold hover:border-white transition-colors">XL</button>
+                                <button onclick="selectSize(this, 'malla-4', 'XXL')" class="size-btn flex-1 py-1 text-xs border border-brandBorder font-semibold hover:border-white transition-colors">XXL</button>
+                            </div>
+                            <button onclick="addToCart('Boardshort Y2K', 30000, 'malla-4', true)" class="w-full bg-white text-black font-bold py-3 text-xs uppercase tracking-widest hover:bg-gray-200 transition-colors">
+                                Agregar al Carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modelo 5 -->
+                <div class="snap-start min-w-[280px] sm:min-w-[320px] max-w-[320px] bg-brandCard border border-brandBorder flex flex-col justify-between group">
+                    <div class="relative overflow-hidden aspect-[3/4]">
+                        <img src="RYW.jpeg" alt="Boardshort RYW" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow justify-between">
+                        <div>
+                            <h3 class="font-bold text-lg text-white">Boardshort RYW</h3>
+                            <p class="text-sm text-gray-400 mt-1">$30.000</p>
+                        </div>
+                        <div class="mt-4">
+                            <label class="block text-xs uppercase font-semibold text-gray-400 mb-2">Seleccionar Talle:</label>
+                            <div class="flex gap-2 mb-4" id="size-malla-5">
+                                <button onclick="selectSize(this, 'malla-5', 'S')" class="size-btn flex-1 py-1 text-xs border border-brandBorder font-semibold hover:border-white transition-colors">S</button>
+                                <button onclick="selectSize(this, 'malla-5', 'M')" class="size-btn flex-1 py-1 text-xs border border-brandBorder font-semibold hover:border-white transition-colors">M</button>
+                                <button onclick="selectSize(this, 'malla-5', 'L')" class="size-btn flex-1 py-1 text-xs border border-brandBorder font-semibold hover:border-white transition-colors">L</button>
+                                <button onclick="selectSize(this, 'malla-5', 'XL')" class="size-btn flex-1 py-1 text-xs border border-brandBorder font-semibold hover:border-white transition-colors">XL</button>
+                                <button onclick="selectSize(this, 'malla-5', 'XXL')" class="size-btn flex-1 py-1 text-xs border border-brandBorder font-semibold hover:border-white transition-colors">XXL</button>
+                            </div>
+                            <button onclick="addToCart('Boardshort RYW', 30000, 'malla-5', true)" class="w-full bg-white text-black font-bold py-3 text-xs uppercase tracking-widest hover:bg-gray-200 transition-colors">
+                                Agregar al Carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modelo 6 -->
+                <div class="snap-start min-w-[280px] sm:min-w-[320px] max-w-[320px] bg-brandCard border border-brandBorder flex flex-col justify-between group">
+                    <div class="relative overflow-hidden aspect-[3/4]">
+                        <img src="WhatsApp Image 2026-10-06 at 13.55.24.jpeg" alt="Boardshort CamuFLage" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow justify-between">
+                        <div>
+                            <h3 class="font-bold text-lg text-white">Boardshort CamuFLage</h3>
+                            <p class="text-sm text-gray-400 mt-1">$30.000</p>
+                        </div>
+                        <div class="mt-4">
+                            <label class="block text-xs uppercase font-semibold text-gray-400 mb-2">Seleccionar Talle:</label>
+                            <div class="flex gap-2 mb-4" id="size-malla-6">
+                                <button onclick="selectSize(this, 'malla-6', 'S')" class="size-btn flex-1 py-1 text-xs border border-brandBorder font-semibold hover:border-white transition-colors">S</button>
+                                <button onclick="selectSize(this, 'malla-6', 'M')" class="size-btn flex-1 py-1 text-xs border border-brandBorder font-semibold hover:border-white transition-colors">M</button>
+                                <button onclick="selectSize(this, 'malla-6', 'L')" class="size-btn flex-1 py-1 text-xs border border-brandBorder font-semibold hover:border-white transition-colors">L</button>
+                                <button onclick="selectSize(this, 'malla-6', 'XL')" class="size-btn flex-1 py-1 text-xs border border-brandBorder font-semibold hover:border-white transition-colors">XL</button>
+                                <button onclick="selectSize(this, 'malla-6', 'XXL')" class="size-btn flex-1 py-1 text-xs border border-brandBorder font-semibold hover:border-white transition-colors">XXL</button>
+                            </div>
+                            <button onclick="addToCart('Boardshort CamuFLage', 30000, 'malla-6', true)" class="w-full bg-white text-black font-bold py-3 text-xs uppercase tracking-widest hover:bg-gray-200 transition-colors">
+                                Agregar al Carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modelo 7 -->
+                <div class="snap-start min-w-[280px] sm:min-w-[320px] max-w-[320px] bg-brandCard border border-brandBorder flex flex-col justify-between group">
+                    <div class="relative overflow-hidden aspect-[3/4]">
+                        <img src="Zero Gravity.jpeg" alt="Boardshort Zero Gravity" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow justify-between">
+                        <div>
+                            <h3 class="font-bold text-lg text-white">Boardshort Zero Gravity</h3>
+                            <p class="text-sm text-gray-400 mt-1">$30.000</p>
+                        </div>
+                        <div class="mt-4">
+                            <label class="block text-xs uppercase font-semibold text-gray-400 mb-2">Seleccionar Talle:</label>
+                            <div class="flex gap-2 mb-4" id="size-malla-7">
+                                <button onclick="selectSize(this, 'malla-7', 'S')" class="size-btn flex-1 py-1 text-xs border border-brandBorder font-semibold hover:border-white transition-colors">S</button>
+                                <button onclick="selectSize(this, 'malla-7', 'M')" class="size-btn flex-1 py-1 text-xs border border-brandBorder font-semibold hover:border-white transition-colors">M</button>
+                                <button onclick="selectSize(this, 'malla-7', 'L')" class="size-btn flex-1 py-1 text-xs border border-brandBorder font-semibold hover:border-white transition-colors">L</button>
+                                <button onclick="selectSize(this, 'malla-7', 'XL')" class="size-btn flex-1 py-1 text-xs border border-brandBorder font-semibold hover:border-white transition-colors">XL</button>
+                                <button onclick="selectSize(this, 'malla-7', 'XXL')" class="size-btn flex-1 py-1 text-xs border border-brandBorder font-semibold hover:border-white transition-colors">XXL</button>
+                            </div>
+                            <button onclick="addToCart('Boardshort Zero Gravity', 30000, 'malla-7', true)" class="w-full bg-white text-black font-bold py-3 text-xs uppercase tracking-widest hover:bg-gray-200 transition-colors">
+                                Agregar al Carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECCIÓN: CONJUNTOS -->
+        <section id="conjuntos" class="scroll-mt-28">
+            <div class="border-b border-brandBorder pb-4 mb-8">
+                <span class="text-xs uppercase tracking-widest text-gray-500 font-bold">Training &amp; Sport</span>
+                <h2 class="text-3xl font-black tracking-tight text-white mt-1">Conjuntos (Musculosa + Short)</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <div class="bg-brandCard border border-brandBorder flex flex-col justify-between group">
+                    <div class="relative overflow-hidden aspect-[4/5]">
+                        <img src="conjunto.jpg" alt="Conjunto Musculosa + Short" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow justify-between">
+                        <div>
+                            <h3 class="font-bold text-xl text-white">Conjunto Deportivo 726</h3>
+                            <p class="text-xs text-gray-400 mt-1">Musculosa microperforada + Short liviano con bolsillos</p>
+                            <p class="text-lg font-bold text-white mt-3">$50.000</p>
+                        </div>
+                        <div class="mt-6">
+                            <label class="block text-xs uppercase font-semibold text-gray-400 mb-2">Seleccionar Talle:</label>
+                            <div class="flex gap-2 mb-4" id="size-conjunto-1">
+                                <button onclick="selectSize(this, 'conjunto-1', 'S')" class="size-btn flex-1 py-1.5 text-xs border border-brandBorder font-semibold hover:border-white transition-colors">S</button>
+                                <button onclick="selectSize(this, 'conjunto-1', 'M')" class="size-btn flex-1 py-1.5 text-xs border border-brandBorder font-semibold hover:border-white transition-colors">M</button>
+                                <button onclick="selectSize(this, 'conjunto-1', 'L')" class="size-btn flex-1 py-1.5 text-xs border border-brandBorder font-semibold hover:border-white transition-colors">L</button>
+                                <button onclick="selectSize(this, 'conjunto-1', 'XL')" class="size-btn flex-1 py-1.5 text-xs border border-brandBorder font-semibold hover:border-white transition-colors">XL</button>
+                                <button onclick="selectSize(this, 'conjunto-1', 'XXL')" class="size-btn flex-1 py-1.5 text-xs border border-brandBorder font-semibold hover:border-white transition-colors">XXL</button>
+                            </div>
+                            <button onclick="addToCart('Conjunto (Musculosa + Short)', 50000, 'conjunto-1', true)" class="w-full bg-white text-black font-bold py-3 text-xs uppercase tracking-widest hover:bg-gray-200 transition-colors">
+                                Agregar al Carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECCIÓN: CAMISETAS RETRO -->
+        <section id="retro" class="scroll-mt-28">
+            <div class="border-b border-brandBorder pb-4 mb-8">
+                <span class="text-xs uppercase tracking-widest text-gray-500 font-bold">Edición Especial</span>
+                <h2 class="text-3xl font-black tracking-tight text-white mt-1">Camisetas Retro</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <div class="bg-brandCard border border-brandBorder flex flex-col justify-between group">
+                    <div class="relative overflow-hidden aspect-[4/5]">
+                        <img src="Remeras retro.jpg" alt="Camisetas Retro" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow justify-between">
+                        <div>
+                            <h3 class="font-bold text-xl text-white">Camiseta Retro de Colección</h3>
+                            <p class="text-xs text-gray-400 mt-1">Modelos icónicos de selección y clubes con detalles de época</p>
+                            <p class="text-lg font-bold text-white mt-3">$45.000</p>
+                        </div>
+                        <div class="mt-6">
+                            <label class="block text-xs uppercase font-semibold text-gray-400 mb-2">Seleccionar Talle:</label>
+                            <div class="flex gap-2 mb-4" id="size-retro-1">
+                                <button onclick="selectSize(this, 'retro-1', 'S')" class="size-btn flex-1 py-1.5 text-xs border border-brandBorder font-semibold hover:border-white transition-colors">S</button>
+                                <button onclick="selectSize(this, 'retro-1', 'M')" class="size-btn flex-1 py-1.5 text-xs border border-brandBorder font-semibold hover:border-white transition-colors">M</button>
+                                <button onclick="selectSize(this, 'retro-1', 'L')" class="size-btn flex-1 py-1.5 text-xs border border-brandBorder font-semibold hover:border-white transition-colors">L</button>
+                                <button onclick="selectSize(this, 'retro-1', 'XL')" class="size-btn flex-1 py-1.5 text-xs border border-brandBorder font-semibold hover:border-white transition-colors">XL</button>
+                                <button onclick="selectSize(this, 'retro-1', 'XXL')" class="size-btn flex-1 py-1.5 text-xs border border-brandBorder font-semibold hover:border-white transition-colors">XXL</button>
+                            </div>
+                            <button onclick="addToCart('Camiseta Retro', 45000, 'retro-1', true)" class="w-full bg-white text-black font-bold py-3 text-xs uppercase tracking-widest hover:bg-gray-200 transition-colors">
+                                Agregar al Carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECCIÓN: TECNOLOGÍA -->
+        <section id="tecnologia" class="scroll-mt-28">
+            <div class="border-b border-brandBorder pb-4 mb-8">
+                <span class="text-xs uppercase tracking-widest text-gray-500 font-bold">Import Tech</span>
+                <h2 class="text-3xl font-black tracking-tight text-white mt-1">Parlantes Portátiles</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <div class="bg-brandCard border border-brandBorder flex flex-col justify-between group">
+                    <div class="relative overflow-hidden aspect-square bg-black flex items-center justify-center p-4">
+                        <img src="parlante jbl.jpg" alt="Parlante JBL" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow justify-between">
+                        <div>
+                            <h3 class="font-bold text-xl text-white">Parlante JBL Go/Clip Style</h3>
+                            <p class="text-xs text-gray-400 mt-1">Sonido de alta definición, resistente al agua, conexión Bluetooth 5.0</p>
+                            <p class="text-lg font-bold text-white mt-3">$40.000</p>
+                        </div>
+                        <div class="mt-6">
+                            <button onclick="addToCart('Parlante JBL Portátil', 40000, 'tech-1', false)" class="w-full bg-white text-black font-bold py-3 text-xs uppercase tracking-widest hover:bg-gray-200 transition-colors">
+                                Agregar al Carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-brandBorder py-12 mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <img src="Logotipo minimalista 726 Imports.png" alt="726 Imports Logo" class="h-8 w-auto invert brightness-200">
+            </div>
+            <p class="text-xs text-gray-500">&copy; 2026 726 IMPORTS. Todos los derechos reservados.</p>
+            <div class="flex gap-4 text-gray-400">
+                <a href="https://wa.me/5493513867470" target="_blank" class="hover:text-white transition-colors"><i class="fa-brands fa-whatsapp text-xl"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Overlay Carrito Modal -->
+    <div id="cart-overlay" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300" onclick="toggleCart()"></div>
+
+    <!-- Panel Flotante de Carrito -->
+    <aside id="cart-drawer" class="fixed top-0 right-0 h-full w-full sm:w-[450px] bg-black border-l border-brandBorder z-50 transform translate-x-full transition-transform duration-300 flex flex-col justify-between shadow-2xl">
+        
+        <!-- Carrito Header -->
+        <div class="p-6 border-b border-brandBorder flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <i class="fa-solid fa-bag-shopping text-xl text-white"></i>
+                <h3 class="font-bold text-lg text-white tracking-wide">Tu Carrito</h3>
+            </div>
+            <button onclick="toggleCart()" class="p-2 text-gray-400 hover:text-white transition-colors">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Carrito Body (Lista de productos) -->
+        <div id="cart-items" class="p-6 flex-grow overflow-y-auto space-y-4">
+            <div id="cart-empty" class="text-center py-12 text-gray-500">
+                <i class="fa-solid fa-cart-flatbed text-4xl mb-3 opacity-30"></i>
+                <p class="text-sm uppercase tracking-wider font-semibold">El carrito está vacío</p>
+            </div>
+        </div>
+
+        <!-- Carrito Footer (Totales + Checkout) -->
+        <div class="p-6 border-t border-brandBorder bg-brandDark space-y-4">
+            
+            <!-- Selector Método de Pago -->
+            <div>
+                <label class="block text-xs uppercase font-bold text-gray-400 mb-2">Método de Pago:</label>
+                <select id="payment-method" class="w-full bg-brandCard border border-brandBorder text-white text-sm p-3 focus:outline-none focus:border-white transition-colors">
+                    <option value="Efectivo">Efectivo</option>
+                    <option value="Transferencia">Transferencia Bancaria</option>
+                    <option value="Mercado Pago">Mercado Pago</option>
+                </select>
+            </div>
+
+            <!-- Resumen Total -->
+            <div class="flex justify-between items-center py-2 border-t border-brandBorder">
+                <span class="text-sm font-semibold text-gray-400 uppercase tracking-wider">Total a pagar:</span>
+                <span id="cart-total" class="text-2xl font-black text-white">$0</span>
+            </div>
+
+            <!-- Botón WhatsApp -->
+            <button onclick="checkoutWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-4 text-xs uppercase tracking-widest flex items-center justify-center gap-2 transition-colors">
+                <i class="fa-brands fa-whatsapp text-lg"></i>
+                Finalizar Pedido por WhatsApp
+            </button>
+        </div>
+
+    </aside>
+
+    <!-- Notificación Toast de "Agregado al Carrito" -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-white text-black px-6 py-4 border-l-4 border-black font-bold text-xs uppercase tracking-wider shadow-2xl opacity-0 translate-y-4 pointer-events-none transition-all duration-300 z-50 flex items-center gap-3">
+        <i class="fa-solid fa-check text-base"></i>
+        <span id="toast-msg">Producto agregado</span>
+    </div>
+
+    <!-- JavaScript interactivo -->
+    <script>
+        // Estado Global del Carrito y Selección
+        let cart = [];
+        let selectedSizes = {};
+
+        // Función para scroll suave del Carrusel
+        function scrollCarousel(direction) {
+            const container = document.getElementById('mallas-carousel');
+            const scrollAmount = 340;
+            container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+        }
+
+        // Selección de Talle
+        function selectSize(btnElement, productId, size) {
+            const container = document.getElementById(`size-${productId}`);
+            const buttons = container.querySelectorAll('.size-btn');
+            
+            buttons.forEach(b => {
+                b.classList.remove('bg-white', 'text-black', 'border-white');
+                b.classList.add('border-brandBorder');
+            });
+
+            btnElement.classList.add('bg-white', 'text-black', 'border-white');
+            selectedSizes[productId] = size;
+        }
+
+        // Agregar Item al Carrito
+        function addToCart(title, price, productId, requiresSize) {
+            let size = null;
+            if (requiresSize) {
+                size = selectedSizes[productId];
+                if (!size) {
+                    showToast('Por favor selecciona un talle primero', true);
+                    return;
+                }
+            }
+
+            const itemKey = requiresSize ? `${title}-${size}` : title;
+            const existingItem = cart.find(item => item.key === itemKey);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    key: itemKey,
+                    title: title,
+                    price: price,
+                    size: size,
+                    quantity: 1
+                });
+            }
+
+            updateCartUI();
+            showToast(`${title} ${size ? `(${size})` : ''} agregado`);
+        }
+
+        // Modificar Cantidad
+        function changeQuantity(key, delta) {
+            const item = cart.find(i => i.key === key);
+            if (item) {
+                item.quantity += delta;
+                if (item.quantity <= 0) {
+                    cart = cart.filter(i => i.key !== key);
+                }
+            }
+            updateCartUI();
+        }
+
+        // Actualizar Interfaz del Carrito
+        function updateCartUI() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartEmptyMsg = document.getElementById('cart-empty');
+            const cartCountBadge = document.getElementById('cart-count');
+            const cartTotalElem = document.getElementById('cart-total');
+
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+            cartCountBadge.innerText = totalItems;
+            cartTotalElem.innerText = `$${totalPrice.toLocaleString('es-AR')}`;
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '';
+                cartItemsContainer.appendChild(cartEmptyMsg);
+                cartEmptyMsg.classList.remove('hidden');
+                return;
+            }
+
+            cartEmptyMsg.classList.add('hidden');
+            cartItemsContainer.innerHTML = '';
+
+            cart.forEach(item => {
+                const subtotal = item.price * item.quantity;
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'bg-brandCard border border-brandBorder p-4 flex justify-between items-center';
+                itemDiv.innerHTML = `
+                    <div>
+                        <h4 class="font-bold text-sm text-white">${item.title}</h4>
+                        ${item.size ? `<span class="text-xs text-gray-400 uppercase tracking-wider">Talle: ${item.size}</span>` : ''}
+                        <p class="text-xs text-gray-300 font-semibold mt-1">$${item.price.toLocaleString('es-AR')} x ${item.quantity}</p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="flex items-center border border-brandBorder">
+                            <button onclick="changeQuantity('${item.key}', -1)" class="px-2 py-1 text-xs text-gray-400 hover:text-white">-</button>
+                            <span class="px-2 py-1 text-xs font-bold text-white">${item.quantity}</span>
+                            <button onclick="changeQuantity('${item.key}', 1)" class="px-2 py-1 text-xs text-gray-400 hover:text-white">+</button>
+                        </div>
+                        <span class="text-sm font-bold text-white min-w-[70px] text-right">$${subtotal.toLocaleString('es-AR')}</span>
+                    </div>
+                `;
+                cartItemsContainer.appendChild(itemDiv);
+            });
+        }
+
+        // Abrir/Cerrar Carrito Modal
+        function toggleCart() {
+            const drawer = document.getElementById('cart-drawer');
+            const overlay = document.getElementById('cart-overlay');
+            
+            const isOpen = !drawer.classList.contains('translate-x-full');
+            if (isOpen) {
+                drawer.classList.add('translate-x-full');
+                overlay.classList.add('opacity-0', 'pointer-events-none');
+            } else {
+                drawer.classList.remove('translate-x-full');
+                overlay.classList.remove('opacity-0', 'pointer-events-none');
+            }
+        }
+
+        // Toast Feedback
+        function showToast(msg, isError = false) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-msg');
+            
+            toastMsg.innerText = msg;
+            toast.className = `fixed bottom-6 right-6 px-6 py-4 font-bold text-xs uppercase tracking-wider shadow-2xl transition-all duration-300 z-50 flex items-center gap-3 ${
+                isError ? 'bg-red-600 text-white border-l-4 border-red-900' : 'bg-white text-black border-l-4 border-black'
+            }`;
+            
+            toast.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+            
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+            }, 3000);
+        }
+
+        // Checkout y Redirección a WhatsApp
+        function checkoutWhatsApp() {
+            if (cart.length === 0) {
+                showToast('El carrito está vacío', true);
+                return;
+            }
+
+            const paymentMethod = document.getElementById('payment-method').value;
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+            let message = "Hola! Quiero encargar los siguientes productos de 726:\n";
+
+            cart.forEach(item => {
+                const subtotal = item.price * item.quantity;
+                const sizeText = item.size ? ` - Talle: ${item.size}` : '';
+                message += `${item.title}${sizeText} x${item.quantity} - $${subtotal.toLocaleString('es-AR')}\n`;
+            });
+
+            message += `\nTotal a pagar: $${totalPrice.toLocaleString('es-AR')}\n`;
+            message += `Método de pago: ${paymentMethod}\n`;
+            message += `¿Coordinamos para el pago y la entrega?`;
+
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappNumber = "5493513867470";
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
