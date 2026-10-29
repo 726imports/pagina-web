@@ -6,7 +6,7 @@ let cart=[];try{const saved=JSON.parse(localStorage.getItem('726-bag-v1')||'[]')
 let active=null,timer;
 const dialog=$('#product-dialog');
 function toast(text){$('#toast').textContent=text;clearTimeout(timer);timer=setTimeout(()=>$('#toast').textContent='',3200)}
-if($('#products')) $('#products').innerHTML=products.map(p=>`<article class="card"><button class="card-photo" data-product="${p.id}" aria-label="Ver ${p.name}"><img src="${p.image}" alt="${p.name}" width="900" height="1125" loading="lazy"><span class="tag">PRECIO ESPECIAL</span></button><h3>${p.name}</h3><div class="price"><del>$42.990</del><strong>$30.000</strong></div><button class="button" data-product="${p.id}">Elegir talle ↗</button></article>`).join('');
+if($('#products')) $('#products').innerHTML=products.map(p=>`<article class="card"><button class="card-photo" data-product="${p.id}" aria-label="Ver ${p.name}"><img src="${p.image}" alt="${p.name}" width="900" height="1125" loading="lazy"><span class="tag">OFERTA</span></button><h3>${p.name}</h3><div class="price"><del>$42.990</del><strong>$30.000</strong></div><button class="button" data-product="${p.id}">VER OPCIONES</button></article>`).join('');
 $('#products')?.addEventListener('click',e=>{const b=e.target.closest('[data-product]');if(b)openProduct(Number(b.dataset.product))});
 function gallery(guide){$('#detail-image').src=guide?'talles.webp':active.image;$('#detail-image').alt=guide?'Guía de talles: XS ancho 38 cm; S 40 cm; M 42 cm; L 44 cm; XL 46 cm; XXL 48 cm. Largo 55 cm en todos. Ancho medido de lado a lado de la prenda en reposo.':active.name;$('#photo-tab').setAttribute('aria-pressed',String(!guide));$('#size-tab').setAttribute('aria-pressed',String(guide))}
 function openProduct(id){active=products.find(p=>p.id===id);$('#product-title').textContent=active.name;$('#sizes').innerHTML=SIZES.map(s=>`<label><input type="radio" name="size" value="${s}" required><span>${s}</span></label>`).join('');$('#quantity').value=1;gallery(false);dialog.showModal();dialog.scrollTop=0;document.body.style.overflow='hidden'}
@@ -20,7 +20,6 @@ function checkoutURL(){const lines=cart.map(x=>`${products.find(p=>p.id===x.id).
 if($('#checkout')) $('#checkout').onclick=()=>{if(cart.length)window.open(checkoutURL(),'_blank','noopener,noreferrer')};renderCart();
 
 const menuButton=$('.menu-toggle'),menu=$('#site-menu');
-function closeMenu(){menu.hidden=true;menuButton.setAttribute('aria-expanded','false');menuButton.setAttribute('aria-label','Abrir menú')}
-menuButton.addEventListener('click',()=>{const open=menu.hidden;menu.hidden=!open;menuButton.setAttribute('aria-expanded',String(open));menuButton.setAttribute('aria-label',open?'Cerrar menú':'Abrir menú')});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!menu.hidden){closeMenu();menuButton.focus()}});
-document.addEventListener('click',e=>{if(!menu.hidden&&!menu.contains(e.target)&&!menuButton.contains(e.target))closeMenu()});
+menuButton.addEventListener('click',()=>{menu.showModal();menuButton.setAttribute('aria-expanded','true');document.body.style.overflow='hidden'});
+$('.menu-close').addEventListener('click',()=>menu.close());
+menu.addEventListener('close',()=>{menuButton.setAttribute('aria-expanded','false');document.body.style.overflow='';menuButton.focus()});
