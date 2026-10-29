@@ -20,6 +20,6 @@ function checkoutURL(){const lines=cart.map(x=>`${products.find(p=>p.id===x.id).
 if($('#checkout')) $('#checkout').onclick=()=>{if(cart.length)window.open(checkoutURL(),'_blank','noopener,noreferrer')};renderCart();
 
 const menuButton=$('.menu-toggle'),menu=$('#site-menu');
-menuButton.addEventListener('click',()=>{menu.showModal();menuButton.setAttribute('aria-expanded','true');document.body.style.overflow='hidden'});
+menuButton.addEventListener('click',()=>{$('#menu-count').textContent=$('#count').textContent;menu.showModal();menuButton.setAttribute('aria-expanded','true');document.body.style.overflow='hidden'});
 $('.menu-close').addEventListener('click',()=>menu.close());
 menu.addEventListener('close',()=>{menuButton.setAttribute('aria-expanded','false');document.body.style.overflow='';menuButton.focus()});
